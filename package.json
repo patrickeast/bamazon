@@ -1,0 +1,29 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "An Amazon-like storefront with Node and MySQl.",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patrickeast/bamazon.git"
+  },
+  "keywords": [
+    "MySQL",
+    "Node",
+    "Amazon"
+  ],
+  "author": "Patrick East",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/patrickeast/bamazon/issues"
+  },
+  "homepage": "https://github.com/patrickeast/bamazon#readme",
+  "dependencies": {
+    "inquirer": "^5.2.0",
+    "mysql": "^2.15.0",
+    "table": "^4.0.3"
+  }
+}
