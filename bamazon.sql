@@ -14,7 +14,8 @@ CREATE TABLE products
     price INT
     (10),
     stock_quantity INT
-    (10)
+    (10),
+    PRIMARY KEY(id)
 );
     INSERT INTO products
         (item_id, product_name, department_name, price, stock_quantity)
@@ -23,7 +24,7 @@ CREATE TABLE products
     INSERT INTO products
         (item_id, product_name, department_name, price, stock_quantity)
     VALUES
-        (02, 'Super Nintendo Entertainment System', 'Electronics', 50, 2000);
+        (02, 'Original Sony NES', 'Electronics', 50, 2000);
     INSERT INTO products
         (item_id, product_name, department_name, price, stock_quantity)
     VALUES
@@ -51,7 +52,7 @@ CREATE TABLE products
     INSERT INTO products
         (item_id, product_name, department_name, price, stock_quantity)
     VALUES
-        (09, 'Shirtless Nicolas Cage Pillowcase', 'Living Room', 20, 200);
+        (09, 'Shirtless Nic Cage Pillowcase', 'Living Room', 20, 200);
     INSERT INTO products
         (item_id, product_name, department_name, price, stock_quantity)
     VALUES
