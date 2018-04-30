@@ -41,32 +41,41 @@ function initialPrompt() {
             let unitQuantity = answer.numunits;
             console.log("Product ID = " + productId);
             console.log("Quantity requested to purchase: " + unitQuantity);
-            initialPrompt();
-            checkStores();
+
+            connection.query(`SELECT * FROM products WHERE item_id = "${productId}"`, function (err, results) {
+                if (err) throw err;
+                // results will contain the results of the query
+                let prodName = results[0].product_name;
+                let prodPrice = results[0].price;
+                if (results[0].stock_quantity >= unitQuantity) {
+                    let updatedQuantity = results[0].stock_quantity - unitQuantity;
+                    updateProduct(unitQuantity, updatedQuantity, productId, prodName, prodPrice);
+                } else {
+                    console.log(`Insufficient quantity! You requested ${unitQuantity}, but we only have ${results[0].stock_quantity}. Order canceled.`);
+                }
+                connection.end();
+            });
+
         })
 };
 
-function checkStores() {
-    if (this.unitQuantity > this.productId.stock_quantity) {
-        console.log("Insufficient quantity!");
-    } else {
-        console.log("Item purchased.")
-        productId.stock_quantity -= this.unitQuantity;
-        inquirer
-            .prompt([
-                {
-                    name: "showStores",
-                    type: "confirm",
-                    message: "Would you like to purchase another item?"
-                }
-            ]).then(function (answer) {
-                if (answer.showStores) {
-                    listItemsAvail();
-                    initialPrompt();
-                } else {
-                    connection.end();
-                }
-            })
-    }
-}
+function updateProduct(answerQuantity, newQuantity, answerProductId, productName, productPrice) {
+    connection.query(`UPDATE products SET stock_quantity = '${newQuantity}' WHERE item_id = '${answerProductId}'`, function (error) {
+        if (error) throw error;
+        console.log(`Purchase successful. You purchased ${answerQuantity} ${productName}s for $${productPrice * answerQuantity}`);
+    });
+    // inquirer.prompt([
+    //     {
+    //         name: "continueShopping",
+    //         type: "confirm",
+    //         message: "Would you like to keep shopping?"
+    //     }
+    // ]).then(function (answer) {
+    //     if (answer.continueShopping) {
+    //         initialPrompt();
+    //     } else {
+    //         connection.end();
+    //     }
+    // })
+};
 
