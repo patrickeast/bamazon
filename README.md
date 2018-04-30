@@ -9,4 +9,4 @@ I would like to continue this project, creating Manager and Supervisor roles. I 
 **Video Walk-through**
 
 Check it out:
-https://www.patrickeast.github.io/bamazon/BamazonTutorial.mov"
+https://youtu.be/3rUv-7DSmtE
